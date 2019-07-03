@@ -22,7 +22,7 @@ class CompteController extends AbstractController
 
         /**
      * @Route("/compte-ajout", name="compte-ajout", requirements={"compte-ajout"="^(?!register).+"})
-     * @Route("detail/{compte}/modifier", name="compte-modifier", requirements={"compte-modifier"="^(?!register).+"})
+     * @Route("detail-compte/{compte}/modifier", name="compte-modifier", requirements={"compte-modifier"="^(?!register).+"})
      */
     public function form(Request $request, Compte $compte = null)
     {
