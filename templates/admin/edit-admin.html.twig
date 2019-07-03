@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page edition de categorie {% endblock %}
+
+{% block body %}
+
+    <style>
+        .example-wrapper { margin: 1em auto; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+        .example-wrapper table { text-align: center; font-size: 14px;}
+    </style>
+    {#    {% form_theme form 'bootstrap_4_layout.html.twig' %}#}
+
+    <div class="example-wrapper">
+
+        <!-- Ici bloc sous le menu : Description et lien ajout -->
+        <div class="row">
+            <div class="card border-secondary" style="width: 66rem;">
+                <div class="card-body">
+                    <h1 class="card-title">Gestion des utilisateurs </h1>
+                </div>
+                <div class="card-header">
+                    <div>
+                        <a href="{{ path('home') }}" class="btn btn-secondary">Retour sur Accueil</a>
+                        <a href="{{ path('edit-admin') }}" class="btn btn-secondary">Retour sur Liste Gestionnaire</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.username) }}
+        {#        {{ form_row(registrationForm.roles) }}#}
+        {{ form_row(registrationForm.plainPassword) }}
+
+        <button class="btn">Register</button>
+        {{ form_end(registrationForm) }}
+    </div>
+
+{% endblock %}

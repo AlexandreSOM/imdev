@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Plateforme Imdev{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; width: 95%; font: 14px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+        .example-wrapper table { text-align: center; margin-top: 35px;}
+        .example-wrapper thead { font-size: 14px;}
+        .example-wrapper tbody { font-size: 12px;}
+        .add {text-align: center;}
+    </style>
+
+    <div class="example-wrapper">
+
+
+        <!-- Ici bloc sous le menu : Description et lien ajout -->
+        <div class="row">
+            <div class="card border-secondary" style="width: 66rem;">
+                <div class="card-body">
+                    <h1 class="card-title">Page d'accueil - Liste des comptes </h1>
+                </div>
+                <div class="card-header">
+                    <div>
+                        <a href="#" class="btn btn-secondary">CATEGORIES</a>
+                        <a href="#" class="btn btn-secondary">COMPTES</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-success add" style="width: 16rem;">
+                <div class="card-body">
+                    <h5>Ajouter un compte </h5>
+                    <button  type="button" class="btn btn-success">
+                        <a href="{{ path('compte-ajout') }}" style="color:white">
+                            <i class="fas fa-user-plus"></i>
+                        </a>
+                    </button>
+                </div>
+            </div>
+
+        </div> <!--Fin row-->
+        <!-- Fin bloc sous le menu -->
+
+        <!-- Ici tableau-->
+
+        <div>
+            <table class="table table-hover table-light">
+                <thead>
+                <tr class="table-active">
+                    <th scope="col">CATEGORIES</th>
+                    <th scope="col">COMPTES </th>
+                    <th scope="col">LIENS </th>
+                    <th scope="col">LOGINS </th>
+                    <th scope="col">PASSWORD </th>
+                    <th scope="col">DESCRIPTIONS </th>
+                    <th scope="col">MODIFICATIONS </th>
+                </tr>
+                </thead>
+                <tbody class="table">
+
+
+
+                <!-- Liste des comptes : TOUS  -->
+                {% for compte in comptes %}
+                <tr>
+                    <td>
+                        {{ compte.categorie.titre}}
+                    </td>
+                    <th scope="row">
+                        {{ compte.nomcompte }}
+                    </th>
+                    <td>
+                        {{ compte.urlcompte }}
+                    </td>
+                    <td>
+                        {{ compte.logincompte }}
+                    </td>
+                    <td>
+                        {{ compte.passwordCompte }}
+{#                        <a> {% include 'comptes_admin/compte-modal/hash-modal.html.twig' with {'name': 'modal-delete'} %} </a>#}
+                    </td>
+                    <td>
+                        {{ compte.passwordCompte  }}
+                    </td>
+
+                    <td>{{ compte.descriptioncompte }}</td>
+
+                    <td>
+                        <button type="button" class="btn btn-outline-primary"> <a href="{{ path('compte-modifier', {'compte': compte.id}) }}"> <i class="fas fa-user-edit"></i>  </a>  </button>
+                        <a href="#"> {% include 'modal/delete-compte.html.twig' with {'name': 'modal-delete'} %} </a>
+                    </td>
+                    {% endfor %}
+                </tr>
+                <!-- FIN Liste des comptes : TOUS  -->
+
+
+                </tbody> <!-- FIN TBody -->
+            </table> <!--fin tableau listant-->
+        </div> <!-- fin DIV table -->
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EDITION GESTIONNAIRE {% endblock %}
+
+{% block body %}
+
+
+    <!-- Ici bloc sous le menu : Description et lien ajout -->
+    <div class="row">
+        <div class="card border-secondary" style="width: 66rem;">
+            <div class="card-body">
+                <h1 class="card-title">Nouveau Gestionnaire </h1>
+            </div>
+            <div class="card-header">
+                <div>
+                    <a href="{{ path('home') }}" class="btn btn-secondary">Retour sur Accueil</a>
+                    <a href="{{ path('edit-admin') }}" class="btn btn-secondary">Retour sur Liste Gestionnaire</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.username) }}
+        {{ form_row(registrationForm.plainPassword) }}
+
+        <button class="btn">Register</button>
+    {{ form_end(registrationForm) }}
+{% endblock %}

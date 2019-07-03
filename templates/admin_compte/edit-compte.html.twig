@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page edition de compte{% endblock %}
+
+{% block body %}
+
+    <style>
+        .example-wrapper { margin: 1em auto; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+        .example-wrapper table { text-align: center; font-size: 14px;}
+    </style>
+    {% form_theme formCompte 'bootstrap_4_layout.html.twig' %}
+
+    <div class="example-wrapper">
+
+        <h1> EDITION COMPTE</h1>
+
+        <button type="button" class="btn btn-outline-primary" > <a href="{{ path('home') }}"><i class="fas fa-home"></i>  Retour sur accueil  </a></button>
+
+        {{ form_start(formCompte) }}
+        <table class="table">
+            <tr>
+                <th scope="row">{{ form_row(formCompte.category) }}</th>
+                <th scope="row">{{ form_row(formCompte.nomCompte, {'attr' : {'placeholder' : "Nom du compte"}}) }}</th>
+                <td>{{ form_row(formCompte.urlCompte, {'attr' : {'placeholder' : "Placer ici l'URL"}}) }}</td>
+                <td>{{ form_row(formCompte.loginCompte, {'attr' : {'placeholder' : "Votre identifiant"}}) }}</td>
+                <td>{{ form_row(formCompte.passwordCompte, {'attr' : {'placeholder' : "Votre mot de passe"}}) }}</td>
+                <td>{{ form_row(formCompte.descriptionCompte, {'attr' : {'placeholder' : "Votre description"}}) }}</td>
+            </tr>
+        </table>
+        <div class="offset-md-5 col-md-4">
+            <button type="submit" class="btn btn-outline-success"> VALIDER </button>
+        </div>
+        {{ form_end(formCompte) }}
+    </div>
+
+{% endblock %}
